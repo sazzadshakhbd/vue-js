@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Methods parameter(2)</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <h3>{{addition(5,5)}}</h3>
+        <h3>{{subtraction(50,30)}}</h3>
+    </div>
+
+
+    <script>
+        var x = new Vue ({
+            el:'#app',
+            methods: {
+                addition: function(num1, num2){
+                    return num1 + num2
+                },
+                subtraction: function(x,y){
+                    return x - y
+                }
+            }
+        })
+    </script>
+</body>
+</html>
