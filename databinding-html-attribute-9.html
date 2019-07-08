@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Methods keyname</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <a v-bind:href="googleLink" v-bind:title="titleName">{{name}}</a>
+    </div>
+
+
+    <script>
+        var x = new Vue ({
+            el:'#app',
+            data: {
+                name: "google.com",
+                googleLink: "https://www.google.com/",
+                titleName: "google.com"
+            }
+        })
+    </script>
+</body>
+</html>
