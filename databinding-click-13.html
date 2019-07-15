@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html content Bind</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/vue.js"></script>
+    
+</head>
+<body>
+    
+    <div id="app" class="m-5">
+        <button v-on:click="increment" class="btn btn-sm btn-success mr-5">Increment++</button>
+        <span>{{counter}}</span>
+        <button v-on:click="decrement" class="btn btn-sm btn-danger ml-5">Decrement--</button>
+    </div>
+    
+
+
+    <script>
+        var x = new Vue({
+            el: "#app",
+            data: {
+                counter: 0
+            },
+            methods: {
+                increment:function(){
+                    this.counter++
+                },
+                decrement: function(){
+                    this.counter--
+                }
+            }
+        })
+    </script>
+</body>
+</html>
