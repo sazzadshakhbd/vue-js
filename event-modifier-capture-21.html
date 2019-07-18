@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>capture</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/vue.js"></script>
+    
+</head>
+<body>
+    
+    <div id="app" class="m-5">
+       <div class="parent" @click.capture="parent">
+           <button class="btn btn-success child" @click="child">Click me</button>
+       </div>
+    </div>
+    
+
+
+    <script>
+        var x = new Vue ({
+            el: "#app",
+            data: {
+                
+            },
+            methods: {
+                parent: function(){
+                    console.log('parent')
+                },
+                child: function(){
+                    console.log('child')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
