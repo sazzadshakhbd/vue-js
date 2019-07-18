@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dynamic class create using methods</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/vue.js"></script>
+    <style>
+        .teal {
+            background: teal;
+            color: #fff;
+            border: 0;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <div id="app" class="m-5">
+      <button v-bind:class="{teal:dynamiClass}" @click="clickMe">Click me</button>
+    </div>
+    
+
+
+    <script>
+        var x = new Vue ({
+            el: "#app",
+            data: {
+                dynamiClass:true
+            },
+            methods: {
+                clickMe: function(){
+                    this.dynamiClass = !this.dynamiClass
+                }
+            }
+        })
+    </script>
+</body>
+</html>
