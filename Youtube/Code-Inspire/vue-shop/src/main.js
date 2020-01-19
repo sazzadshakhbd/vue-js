@@ -8,6 +8,7 @@ import 'popper.js';
 import './assets/app.scss';
 
 Vue.config.productionTip = false;
+Vue.component('NavBar', require('./components/NavBar.vue').default);
 
 new Vue({
   router,
