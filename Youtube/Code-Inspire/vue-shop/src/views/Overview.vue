@@ -1,5 +1,5 @@
 <template>
-  <div class="overview">
+  <div class="overview mt-5">
     <div class="container h-100">
       <div class="intro h-100">
         <div class="row h-100 justify-content-center align-items-center">

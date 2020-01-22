@@ -30,7 +30,7 @@
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <a data-toggle="modal" data-target="#login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Get Started</a>
         </form>
       </div>
     </nav>

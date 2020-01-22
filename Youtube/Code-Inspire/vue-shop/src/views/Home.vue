@@ -15,6 +15,7 @@
         </div>
       </div>
     </div>
+    <login></login>
   </div>
 </template>
 
@@ -23,13 +24,15 @@
 import NavBar from "@/components/NavBar.vue";
 import Hero from "@/components/Hero.vue";
 import Products from "@/sections/Products.vue";
+import Login from "@/components/Login.vue";
 
 export default {
   name: "home",
   components: {
     NavBar,
     Hero,
-    Products
+    Products,
+    Login
   }
 };
 </script>
