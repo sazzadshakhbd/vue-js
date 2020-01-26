@@ -12,11 +12,7 @@
       <div class="modal-dialog text-left" role="document">
         <div class="modal-content">
           <div class="modal-body">
-            <ul
-              class="nav nav-fill nav-pills mb-3"
-              id="pills-tab"
-              role="tablist"
-            >
+            <ul class="nav nav-fill nav-pills mb-3" id="pills-tab" role="tablist">
               <li class="nav-item">
                 <a
                   class="nav-link active"
@@ -26,8 +22,7 @@
                   role="tab"
                   aria-controls="pills-login"
                   aria-selected="true"
-                  >Login</a
-                >
+                >Login</a>
               </li>
               <li class="nav-item">
                 <a
@@ -38,8 +33,7 @@
                   role="tab"
                   aria-controls="pills-register"
                   aria-selected="false"
-                  >Signup</a
-                >
+                >Signup</a>
               </li>
             </ul>
 
@@ -60,9 +54,7 @@
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
                   />
-                  <small class="form-text text-muted"
-                    >We'll never share your email with anyone else.</small
-                  >
+                  <small class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
@@ -92,6 +84,7 @@
                     type="text"
                     class="form-control"
                     id="name"
+                    v-model="name"
                     placeholder="Your nice name"
                   />
                 </div>
@@ -102,6 +95,7 @@
                     type="email"
                     class="form-control"
                     id="email"
+                    v-model="email"
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
                   />
@@ -112,12 +106,13 @@
                     type="password"
                     class="form-control"
                     id="password"
+                    v-model="password"
                     placeholder="Password"
                   />
                 </div>
 
                 <div class="form-group">
-                  <button class="btn btn-primary">Signup</button>
+                  <button class="btn btn-primary" data-dismiss="modal" @click="register">Signup</button>
                 </div>
               </div>
             </div>
@@ -129,8 +124,44 @@
 </template>
 
 <script>
+import { fb } from "../firebase";
 export default {
-  name: "Login"
+  name: "Login",
+  data() {
+    return {
+      name: null,
+      email: null,
+      password: null
+    };
+  },
+  methods: {
+    register() {
+      fb.auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(res => {
+          this.name = null;
+          this.email = null;
+          this.password = null;
+        })
+        // .then(res => {
+        //   document.getElementById("login").classList.remove("show");
+        //   document
+        //     .getElementsByClassName("modal-backdrop fade show")[0]
+        //     .classList.remove("show");
+        // })
+        .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          if (errorCode == "auth/weak-password") {
+            alert("The password is too weak.");
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+        });
+    }
+  }
 };
 </script>
 
