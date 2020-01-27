@@ -13,6 +13,18 @@
           </div>
         </div>
       </div>
+      <hr />
+      <div class="product-test">
+        <div class="form-group">
+          <input type="text" placeholder="Product Name" v-model="name" class="form-control" />
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Price" v-model="price" class="form-control" />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" @click="saveData">Save Data</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
