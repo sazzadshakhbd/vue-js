@@ -144,7 +144,7 @@ export default {
           this.password = null;
         })
         .then(user => {
-          $("#myModal").modal("hide");
+          // $("#myModal").modal("hide");
           this.$router.replace("admin");
         })
         // .then(res => {

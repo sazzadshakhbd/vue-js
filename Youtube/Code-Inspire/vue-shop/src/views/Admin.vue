@@ -77,7 +77,7 @@
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="#" @click="logOut">
                   <i class="fa fa-power-off"></i>
                   <span>Logout</span>
                 </a>
@@ -98,19 +98,23 @@
 </template>
 
 <script>
+import { fb } from "../firebase";
 export default {
   name: "admin",
-  data() {
-    return {};
-  },
-  components: {},
   methods: {
     closeMenu() {
       $(".page-wrapper").toggleClass("toggled");
+    },
+    logOut() {
+      fb.auth()
+        .signOut()
+        .then(() => {
+          this.$router.replace("/");
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };
 </script>
-
-<style>
-</style>
