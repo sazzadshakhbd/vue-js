@@ -143,6 +143,10 @@ export default {
           this.email = null;
           this.password = null;
         })
+        .then(user => {
+          $("#myModal").modal("hide");
+          this.$router.replace("admin");
+        })
         // .then(res => {
         //   document.getElementById("login").classList.remove("show");
         //   document
