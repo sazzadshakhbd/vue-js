@@ -142,8 +142,8 @@ export default {
     login() {
       fb.auth()
         .signInWithEmailAndPassword(this.email, this.password)
-        .then(user => {
-          $("#myModal").modal("hide");
+        .then(() => {
+          $("#login").modal("hide");
           this.$router.replace("admin");
         })
         .catch(function(error) {
@@ -161,13 +161,13 @@ export default {
     register() {
       fb.auth()
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then(res => {
-          this.name = null;
-          this.email = null;
-          this.password = null;
-        })
+        // .then(res => {
+        //   this.name = null;
+        //   this.email = null;
+        //   this.password = null;
+        // })
         .then(user => {
-          $("#myModal").modal("hide");
+          $("#login").modal("hide");
           this.$router.replace("admin");
         })
         .catch(function(error) {
