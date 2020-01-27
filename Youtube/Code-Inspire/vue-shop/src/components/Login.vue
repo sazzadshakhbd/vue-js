@@ -62,6 +62,7 @@
                   <input
                     type="password"
                     v-model="password"
+                    @keyup.enter="login"
                     class="form-control"
                     id="exampleInputPassword1"
                     placeholder="Password"
@@ -109,6 +110,7 @@
                     class="form-control"
                     id="password"
                     v-model="password"
+                    @keyup.enter="register"
                     placeholder="Password"
                   />
                 </div>
@@ -140,11 +142,9 @@ export default {
     login() {
       fb.auth()
         .signInWithEmailAndPassword(this.email, this.password)
-        .then(() => {
+        .then(user => {
           $("#myModal").modal("hide");
           this.$router.replace("admin");
-          this.email = null;
-          this.password = null;
         })
         .catch(function(error) {
           // Handle Errors here.
@@ -167,6 +167,7 @@ export default {
           this.password = null;
         })
         .then(user => {
+          $("#myModal").modal("hide");
           this.$router.replace("admin");
         })
         .catch(function(error) {
