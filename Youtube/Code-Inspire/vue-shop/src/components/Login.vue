@@ -49,6 +49,7 @@
                   <label for="exampleInputEmail1">Email address</label>
                   <input
                     type="email"
+                    v-model="email"
                     class="form-control"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
@@ -60,6 +61,7 @@
                   <label for="exampleInputPassword1">Password</label>
                   <input
                     type="password"
+                    v-model="password"
                     class="form-control"
                     id="exampleInputPassword1"
                     placeholder="Password"
@@ -67,7 +69,7 @@
                 </div>
 
                 <div class="form-group">
-                  <button class="btn btn-primary">Login</button>
+                  <button class="btn btn-primary" data-dismiss="modal" @click="login">Login</button>
                 </div>
               </div>
               <div
@@ -135,6 +137,27 @@ export default {
     };
   },
   methods: {
+    login() {
+      fb.auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          $("#myModal").modal("hide");
+          this.$router.replace("admin");
+          this.email = null;
+          this.password = null;
+        })
+        .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          if (errorCode === "auth/wrong-password") {
+            alert("Wrong password.");
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+        });
+    },
     register() {
       fb.auth()
         .createUserWithEmailAndPassword(this.email, this.password)
@@ -144,15 +167,8 @@ export default {
           this.password = null;
         })
         .then(user => {
-          // $("#myModal").modal("hide");
           this.$router.replace("admin");
         })
-        // .then(res => {
-        //   document.getElementById("login").classList.remove("show");
-        //   document
-        //     .getElementsByClassName("modal-backdrop fade show")[0]
-        //     .classList.remove("show");
-        // })
         .catch(function(error) {
           // Handle Errors here.
           var errorCode = error.code;
