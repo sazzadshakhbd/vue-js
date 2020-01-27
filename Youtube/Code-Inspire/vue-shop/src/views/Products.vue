@@ -44,12 +44,16 @@ export default {
     saveData() {
       db.collection("products")
         .add(this.product)
-        .then(function(docRef) {
+        .then(docRef => {
           console.log("Document written with ID: ", docRef.id);
+          this.reset();
         })
         .catch(function(error) {
           console.error("Error adding document: ", error);
         });
+    },
+    reset() {
+      Object.assign(this.$data, this.$options.data.apply(this));
     }
   }
 };
