@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Binding</title>
+</head>
+<body>
+  
+  <div id="app">
+    <a v-bind:href="links">{{linksName}}</a>
+    <h1 v-bind:data="dynamics">{{content}}</h1>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data: {
+       links: 'https://www.google.com/',
+       linksName: 'Google',
+       content: 'Sazzad',
+       dynamics: 30
+      }
+    });
+  </script>
+</body>
+</html>
