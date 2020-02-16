@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inline Style Binding</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="container" style="background-color: #03A9F4;">
+      <div class="row">
+        <div class="col-md-4 pt-5 pb-5">
+          <h1 :style="{color: 'white', fontSize: fontSizeMd + 'px'}">{{message}}</h1>
+        </div>
+        <div class="col-md-4 pt-5 pb-5">
+          <h2 :style="fontSizeSm">{{message}}</h2>
+        </div>
+        <div class="col-md-4 pt-5 pb-5">
+          <h2 :style="[fontSizeSm,fontStyles]">{{message}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue JS!!!',
+        fontSizeMd: 50,
+        fontSizeSm: {
+          color: '#FFC107',
+          fontSize: '40px'
+        },
+        fontStyles: {
+          fontStyle: 'italic',
+          textTransform: 'uppercase'
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
