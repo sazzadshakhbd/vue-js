@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditional Rendering</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div id="app">
+
+    <div class="m-5">
+      <h1 v-if="isActive">{{userName}}</h1>
+      <h1 v-else-if="userName === 'Sazzad'">{{whatsUp}}</h1>
+      <h1 v-else>{{noUser}}</h1>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        userName: 'Sazzad',
+        noUser: 'No User Found',
+        whatsUp: 'Whats up guys!',
+        isActive: false
+      }
+    });
+  </script>
+</body>
+
+</html>
